@@ -1,5 +1,6 @@
 body {
-    background-color: lightblue;
+    background-color: green;
+    opacity: 0.2;
   }
   
   h1 {
@@ -10,4 +11,5 @@ body {
   p {
     font-family: verdana;
     font-size: 20px;
+    text-align: center;
   }

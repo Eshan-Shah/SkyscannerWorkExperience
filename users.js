@@ -16,7 +16,7 @@ async function getData() {
 
 
     let [name, email] = submitUserData()
-    const url = `http://localhost:8000/form/?name=${name}&email=${email}`
+    const url = `https://eshans.pythonanywhere.com/form/?name=${name}&email=${email}`
     const response = await fetch(url)
 
     .then((response) => {

@@ -8,11 +8,30 @@ body {
   }
   
   p {
-    font-family: verdana;
+    font-family: 'Segoe UI';
     font-size: 20px;
     text-align: center;
   }
 
   input {
     text-align: center;
+  }
+
+  #formcontainer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  #formbg {
+
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
   }

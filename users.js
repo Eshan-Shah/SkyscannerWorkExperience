@@ -37,3 +37,10 @@ async function getData() {
     // window.location.href()
 
 }
+
+
+function goToIndex() {
+
+    window.location.href = 'index.html'
+
+}

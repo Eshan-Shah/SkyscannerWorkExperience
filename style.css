@@ -1,6 +1,5 @@
 body {
-    background-color: green;
-    opacity: 0.2;
+    background-color: rgb(207, 251, 247);
   }
   
   h1 {
@@ -11,5 +10,9 @@ body {
   p {
     font-family: verdana;
     font-size: 20px;
+    text-align: center;
+  }
+
+  input {
     text-align: center;
   }

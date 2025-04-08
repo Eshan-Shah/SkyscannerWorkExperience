@@ -20,7 +20,7 @@ async function getData() {
     const response = await fetch(url)
 
     .then((response) => {
-        return response.json()
+        return response.text()
     })
 
     .then((responseData) => {

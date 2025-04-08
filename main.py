@@ -1,29 +1,23 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
+app = Flask(__name__)
 
-app = FastAPI()
-
-items_db = []
-
+# Enable CORS
 origins = [
-
     'http://localhost:8000',
     'http://localhost:3000'
-    
 ]
+CORS(app, origins=origins, supports_credentials=True)
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
-)
+# In-memory database
+items_db = []
 
-@app.get("/form/")
-async def check(name: str='', email: str=''):
-
+@app.route("/form/", methods=["GET"])
+def check():
+    name = request.args.get("name", "")
+    email = request.args.get("email", "")
+    
     if name_empty(name):
         return 'Please enter a valid name'
     
@@ -36,26 +30,23 @@ async def check(name: str='', email: str=''):
     else:
         items_db.append({"name": name, "email": email})
         return 'Thanks'
-    
-@app.get("/items/")
-async def get_items():
-    return items_db
 
+@app.route("/items/", methods=["GET"])
+def get_items():
+    return jsonify(items_db)
+
+# Helper functions
 def name_empty(name):
-    if name == '' or name == None:
-        return True
-    return False
+    return name == '' or name is None
 
 def email_empty(email):
-    if email == '' or email == None:
-        return True
-    return False
-            
+    return email == '' or email is None
+
 def email_exists(email):
     for item in items_db:
         if email == item["email"]:
             return True
-        
     return False
 
-
+if __name__ == "__main__":
+    app.run(debug=True, port=8000)
